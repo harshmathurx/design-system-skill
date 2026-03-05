@@ -143,6 +143,7 @@ Every animation and haptic in the product. If it moves, it's in here.
 - Haptic policy (which actions get haptics and what type).
 - Loading strategy (skeleton screens vs optimistic updates vs spinners — pick one).
 - Motion direction (things move toward their meaning).
+- Latency budgets table by interaction class (primary, secondary, destructive, navigation).
 
 **Interaction specs**
 For each significant interaction in the product, write a spec block:
@@ -303,6 +304,57 @@ These are non-negotiable across all output:
 **Length:**
 - Each file: 80-200 lines. Long enough to be complete, short enough to actually read.
 - If a file feels too long, the product probably has too many states/components. Flag that.
+
+**Integration:**
+- Any web UI taste signal must be reflected in at least two spec files (e.g., principles + components, or micro-interactions + voice).
+- Every rule should show up as a measurable spec (token, copy rule, interaction timing, or component constraint).
+
+**Quality gates:**
+- Every file ends with 3-6 “pass/fail” checks that can be verified without debate.
+- If a gate fails, the spec is incomplete — do not ship.
+
+**Accessibility (as taste):**
+- Contrast, motion reduction, and target size are aesthetic constraints, not compliance chores.
+- Any component spec must include focus/keyboard behavior and reduced‑motion behavior.
+
+---
+
+## Taste signals for web UI
+
+When the product is web-based, design as if you’re shipping a tool people live inside. This is a hierarchy, not a checklist. Each layer constrains the ones below it. If you waive a rule, you must name the tradeoff and the replacement behavior.
+
+**Layer 1 — Speed is the product**
+- Budget 100ms for perceived response on primary actions; anything slower needs a compensating moment (optimistic UI or clear progress).
+- Prefer skeletons and optimistic transitions over spinners.
+- State always survives refresh and navigation; “back” never punishes the user.
+  - Define a state contract: what persists, what resets, and what can be undone.
+  - If state can’t persist, explain the reason and the recovery path.
+
+**Layer 2 — Navigation should feel inevitable**
+- Every path to a core action is ≤3 steps.
+- URLs are human‑readable, short, and stable; no opaque IDs in visible slugs.
+- Add Cmd/Ctrl+K when there is more than one primary area or action cluster.
+
+**Layer 3 — Restraint creates clarity**
+- Primary UI surfaces use ≤3 colors; state colors are reserved for meaning, not decoration.
+- Tooltips are rare and only for non‑obvious affordances.
+- No product tours; the first run is functional, not performative.
+
+**Layer 4 — Affordances respect humans**
+- Hit targets are generous by default; compact only when density is the product.
+- Clipboard is a first‑class citizen: copy and paste flows are designed, not accidental.
+- Destructive actions are honestly reversible with one click, or they are truly irreversible and explicitly framed as such.
+
+**Layer 5 — Copy is a UI component**
+- Active voice, max seven words per sentence.
+- Reassurance is explicit where loss or destruction is possible.
+  - Define an error hierarchy: silent → inline → blocking, with copy and escalation rules.
+
+**Layer 6 — Visual polish is invisible**
+- Optical alignment over geometric alignment; align to how it reads, not how it measures.
+- Layouts assume left‑to‑right reading unless the product is explicitly multilingual.
+- Visible scrollbars are hidden unless the platform makes them a usability requirement.
+- Provide a copyable SVG logo and compact brand kit spec as a shipped artifact, not a marketing afterthought.
 
 ---
 
