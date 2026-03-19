@@ -33,6 +33,48 @@ Each phase gates the next. You can iterate backwards (validation reveals researc
 
 ---
 
+## Product register
+
+Not every product wants the same amount of creative expression. A concert ticket app and a hospital patient portal both deserve great design — but "great" means completely different things for each. The product register is a dial, set during Phase 0, that governs how aggressively the creative guidance in this skill applies.
+
+```
+Register:   Restrained ─────────────────────────────── Expressive
+                │           │           │           │
+             UTILITY     PROFESSIONAL  CHARACTERFUL  THEATRICAL
+```
+
+**Utility** — The product should be invisible. Users are doing high-stakes, high-frequency tasks (tax filing, medical records, air traffic control, data pipelines). Design courage here means *clarity under pressure*: perfect hierarchy, zero ambiguity, radical simplicity. Inter IS the right font if it's the most readable at 11px in a dense table. Pure white IS the right surface if it's the most neutral reference. Bold here means removing everything that doesn't serve the task — not adding personality.
+- Domain artifacts: rarely applicable. The product probably doesn't digitize a physical object.
+- Signature moment: speed. The fastest response time in the category. The cleanest empty state.
+- Visual expression: minimal. Data-ink ratio is king. Typography does the work; color is reserved for meaning.
+- Landing page: still needs narrative and pacing. Even utility products have a marketing surface.
+
+**Professional** — The product needs trust and warmth without friction (Notion, Figma's editor, Stripe's dashboard). Design courage means making *considered* choices — a non-default typeface, a surface temperature, an accent with personality — without any choice getting in the way of the work. Most B2B SaaS lives here.
+- Domain artifacts: optional. If the product has a core object that maps to a physical form, use it. If not, standard components with distinctive styling are enough.
+- Signature moment: one craft detail that signals "someone cared." A satisfying micro-interaction, a smart default, an empty state that helps.
+- Visual expression: moderate. A distinctive palette, a thoughtful type pairing, restrained animation.
+- Bravery budget: 1-2 entries, not 3.
+
+**Characterful** — The product's personality is part of its value (Linear, Arc, Duolingo, Spotify). Design courage means making choices that are *unmistakably this product*. Someone should be able to identify the product from a cropped screenshot.
+- Domain artifacts: recommended. Find the physical object or cultural form that maps to the core experience.
+- Signature moment: disproportionate investment. The one interaction that makes people pause.
+- Visual expression: full. Bold palette, distinctive type, texture, animation as personality.
+- This is where most of the Creative Expression and Domain Artifacts guidance applies at full strength.
+
+**Theatrical** — The product IS an experience (a concert ticket platform, a heritage museum site, a game, a festival app). Design courage means every surface tells a story. The UI is not a container for content — it's the content.
+- Domain artifacts: required. The primary artifact is the product's visual identity.
+- Signature moment: multiple. The whole experience is designed as a sequence of moments.
+- Visual expression: maximum. Cultural texture, rich animation, immersive layout, physical material vocabulary.
+- Restraint still applies to usability: navigation, forms, error handling stay conventional. The theatricality is in presentation, not in interaction patterns.
+
+**How to set the register:**
+- Ask the user during Phase 0. If they say "enterprise CRM" → Professional. If they say "Rajasthan heritage tour" → Theatrical.
+- If they don't specify, infer from the emotional core and the domain. Default to Professional — it's the safest starting point.
+- The register is not a straitjacket. A Professional product can have one Theatrical moment (a signature interaction). A Utility product can have one Characterful surface (the landing page). But the register sets the *baseline* — how aggressively the creative sections of this skill apply.
+- Throughout this skill, guidance that says "always" or "never" should be read through the register. "Never use pure white" means "don't default to it without considering alternatives" — at Utility register, pure white is a valid considered choice. "The display-to-body ratio should be 3:1 minimum" applies at Characterful and above — at Professional, 2.5:1 is fine; at Utility, whatever serves information density.
+
+---
+
 ## Design courage
 
 Most AI-generated design systems produce professional mediocrity. They're competent, inoffensive, and instantly forgettable. This section exists to prevent that. These aren't optional flourishes — they're the difference between a product people use and a product people love.
@@ -161,7 +203,7 @@ When the product involves data, numbers, or metrics, visualization is a creative
 
 **Texture and depth**
 
-Flat design is over. Not because skeuomorphism is back — because texture creates richness.
+Pure flat design leaves richness on the table — at Characterful and Theatrical registers, texture is a powerful identity tool. At Utility and Professional registers, flatness is a valid choice when density or neutrality is the goal (Stripe and Linear are mostly flat and excellent). The question isn't "flat or textured" — it's "does this product benefit from tactile depth?"
 - **Subtle grain and noise.** A barely-visible noise texture on surfaces adds organic warmth that pure flat colors lack. It makes screens feel crafted rather than generated. 2-5% opacity, monochromatic.
 - **Mesh gradients done right.** Not the garish purple-to-pink gradient from 2019. Modern mesh gradients are subtle, multi-point, and tinted to the brand palette. They create a sense of depth and atmosphere without being loud. Apple's macOS backgrounds are mesh gradients. So is the Linear homepage.
 - **Light and shadow.** Subtle light sources that create gentle highlights and shadows. Glassmorphism (frosted glass) when used sparingly. Inner shadows for inset elements. These depth cues make interfaces feel tactile.
@@ -179,6 +221,148 @@ The spec documents themselves should demonstrate the design language they descri
 - Use comparison tables that show the emotional range, not just the token values.
 - Use before/after examples to show what the system rejects vs. what it produces.
 - Write the specs in the product's voice — if the product is playful, the specs should have moments of wit. If the product is precise, the specs should be surgically exact. The specs are the first artifact of the design language.
+
+---
+
+## Domain artifacts — components that ARE the product
+
+This is the idea that separates a design system from a *museum of great-looking functional elements.*
+
+Most components are generic containers: cards, modals, buttons, inputs. They do their job. They can belong to any product. They're the drywall of UI. Necessary, invisible, interchangeable. But the products people remember — the ones people screenshot and send to friends — have components whose *physical form* is the product's identity. Not styled differently. *Shaped* differently.
+
+A ticket booking site doesn't show your booking in a card. It shows it in a **ticket stub** — perforated edge, tear line, stub with the seat number, maybe a slight rotation like it was just torn off. An Uber-like app doesn't show your fare in a modal. It shows it in a **receipt** — thermal-paper texture, monospaced totals, faded ink at the edges, dotted scissor line. A Rajasthan tourism site doesn't use standard cards for heritage sites. It uses **red sandstone slabs** — the warm ochre and carved texture of Hawa Mahal, with content sitting inside arched jharokha windows.
+
+These are **domain artifacts** — UI components whose shape, texture, and structure are borrowed from the physical objects native to the product's world. They carry identity at the form level, not just the token level. You can swap the colors of a card component and it still looks like every other product. You cannot swap the colors of a ticket stub and lose its identity. The form IS the brand.
+
+**Why domain artifacts work (the psychology)**
+
+- **Material honesty extended.** Material honesty says a button should look pressable. Domain artifacts extend this: a ticket should look tearable, a receipt should look printable, a boarding pass should look scannable. The form communicates the object's purpose before the user reads a single word.
+- **Reflective design at the component level.** Don Norman's reflective level is where users think "this was made for people like me." A cycling app with components shaped like race bibs and route elevation profiles doesn't just display data — it signals belonging. The cyclist sees their world reflected in the UI.
+- **The Von Restorff Effect weaponized.** When every SaaS product uses the same card/modal/list vocabulary, a single domain artifact makes your product the outlier in the user's memory. It's the one that "looked different."
+- **Skeuomorphism evolved.** This isn't the fake leather texture of iOS 6. That was decoration pretending to be material. Domain artifacts are functional — they organize real information into culturally resonant shapes. The ticket stub has a stub because the stub contains your entry info. The receipt has line items because receipts have line items. The form serves the content.
+
+**The domain artifact framework**
+
+For every product, ask:
+
+1. **What physical object does this product replace or digitize?** A booking platform replaces paper tickets. A finance app replaces paper statements. A food delivery app replaces restaurant menus and receipts. A music platform replaces vinyl sleeves, cassette labels, concert posters.
+
+2. **What are the distinctive physical features of that object?** A ticket has a perforated edge, a stub, a barcode area, sometimes a holographic strip. A receipt has a thermal-paper color, monospaced text, a dotted cut line, a faded quality. A vinyl sleeve has a square format, a spine, a track listing on the back. These are the *form signatures* you translate to UI.
+
+3. **What cultural or regional objects define the product's context?** A Rajasthan tourism product → jharokha window arches, red sandstone texture, block-print patterns, miniature painting borders. A Japanese stationery brand → washi tape edges, rice paper texture, brush stroke dividers, hanko stamp accents. A Brooklyn coffee brand → kraft paper, hand-stamped type, torn edges, chalkboard menus. The *place* has a material vocabulary.
+
+4. **Which information naturally maps to the artifact's structure?** A ticket stub's tear line separates "your copy" from "entry copy." A receipt's line items map to order items. A boarding pass's zones map to flight info, gate info, passenger info. Don't force content into an artifact shape — find the artifact whose structure *matches* the content's natural organization.
+
+5. **What's the one artifact that, if someone screenshots it, immediately tells you what product this is?** That's your primary domain artifact. Every product gets one. Maybe two. Not everything needs to be an artifact — most components are still standard. But the *signature component* — the one that shows the core object of the product — that's the artifact.
+
+**A museum of functional elements — the catalog**
+
+These are starting points, not templates. Each one must be adapted to the specific product's emotional core, content structure, and visual language.
+
+```
+DOMAIN              ARTIFACT              FORM SIGNATURES
+─────────────────────────────────────────────────────────────────
+Travel/booking      Ticket stub           Perforated edge, tear line, stub section,
+                                          barcode area, slight rotation/tilt
+Airlines            Boarding pass         Zones (passenger/flight/gate), scannable
+                                          code, gate-change stamp overlay
+Ride-sharing        Receipt               Thermal paper color, monospaced totals,
+                                          dotted cut line, route map thumbnail
+Food delivery       Menu card             Fold lines, dish photography cutouts,
+                                          price column, chef's special badge
+Finance             Bank statement        Watermark, security pattern border,
+                                          tabular transactions, balance highlight
+Music               Vinyl sleeve          Square aspect ratio, spine, track listing,
+                                          liner notes fold, wear texture
+                    Concert ticket        Holographic strip, venue stamp, GA/VIP
+                                          badge, wristband attachment point
+                    Cassette label        Rounded rectangle, reel windows, A/B
+                                          side split, handwritten tracklist feel
+Events              Wristband             Fabric texture, adhesive tab, RFID chip
+                                          area, adjustment snaps
+                    Lanyard badge         Portrait orientation, lanyard hole, name/
+                                          role/company zones, day-color strip
+Sports              Scorecard             Innings/quarters grid, team crests,
+                                          live-dot indicator, stat callout boxes
+                    Jersey card           Fabric mesh texture, number lockup,
+                                          player silhouette, team stripe
+Healthcare          Prescription pad      Rx header, doctor signature area,
+                                          dosage grid, pharmacy stamp
+                    Lab report            Specimen ID band, reference range
+                                          bars, abnormal value flags
+Education           Report card           Grade grid, teacher comment area,
+                                          school crest watermark, term header
+                    Library card          Due date stamps, barcode strip,
+                                          pocket-and-card aesthetic
+Real estate         Property deed         Legal border, seal impression,
+                                          parcel map thumbnail, witness lines
+                    Floor plan card       Blueprint grid, room labels,
+                                          dimension annotations, compass rose
+Rajasthan/heritage  Sandstone slab        Ochre surface, carved jharokha arch
+                                          frame, block-print border pattern
+                    Miniature painting    Ornate border, gold leaf accents,
+                                          manuscript-style text area
+Japanese craft      Washi element         Tape-edge borders, rice paper texture,
+                                          brush stroke dividers, hanko stamp
+Nordic/minimal      Wooden tag            Light birch surface, burned-in text,
+                                          leather cord hole, grain texture
+Postal/shipping     Parcel label          Customs-form grid, stamp collection
+                                          area, fragile/priority stickers, twine
+Coffee/artisan      Kraft sleeve          Brown paper surface, hand-stamped
+                                          logo, torn edge, roast-level meter
+Legal               Court filing          Case number header, margin rules,
+                                          exhibit stamp, filing date mark
+Photography         Contact sheet         Grid of thumbnails, frame numbers,
+                                          grease-pencil selection marks, loupe
+Gaming              Achievement badge     Metallic rim, enamel fill, unlock
+                                          animation state, rarity glow
+Fitness             Race bib              Safety-pin holes, timing chip area,
+                                          distance/category color band
+```
+
+**Specifying domain artifacts**
+
+Domain artifacts aren't just "themed cards." They require a different spec structure because their form is non-standard. For each domain artifact in `05-components.md`:
+
+```
+[Artifact Name]
+domain object:    [the physical thing this is modeled after]
+purpose:          [what information it organizes for the user]
+form signatures:  [the distinctive physical features translated to UI]
+  - [feature 1]: [how it's rendered — CSS technique, visual treatment]
+  - [feature 2]: [...]
+  - [feature 3]: [...]
+content zones:    [how the artifact's structure maps to content]
+  - [zone 1]: [what goes here, why this zone exists on the physical object]
+  - [zone 2]: [...]
+materials:        [surface texture, color, visual treatment that evokes the physical material]
+wear and life:    [does this artifact show age, state, or history? e.g., a stamped passport
+                   gains stamps over time; a used ticket gets a tear; a receipt fades]
+states:           [how standard states — hover, active, empty, error — manifest on THIS form]
+interaction:      [artifact-specific interactions — tear animation, stamp impression,
+                   flip to back, fold/unfold, peel, scratch-reveal]
+responsive:       [how the artifact adapts — a ticket stub might rotate to portrait on
+                   mobile; a vinyl sleeve might show only the front face]
+accessibility:    [the artifact must remain accessible — semantic structure underneath
+                   the visual treatment, screen reader description of the form, keyboard
+                   interaction that doesn't depend on the visual metaphor]
+```
+
+**The rules of domain artifacts**
+
+1. **One primary artifact per product — if the domain has one.** The signature. The thing you see and know what product this is. Supporting components can be standard. The signature cannot. **But not every product digitizes a physical object.** A B2B analytics dashboard, an internal admin panel, or a developer tool may have no natural domain artifact. That's fine. At Utility and Professional registers, the skill produces standard components with distinctive styling instead. Don't force an artifact where none belongs — a "dashboard card shaped like a lab notebook" is cosplay, not design. Domain artifacts are powerful when authentic; cringe when contrived.
+
+2. **Form follows content.** The artifact's structure must naturally organize the content. If you're forcing content into an artifact shape, you picked the wrong artifact. A receipt works for an order summary because receipts ARE order summaries. A receipt doesn't work for a user profile.
+
+3. **Physical features are functional, not decorative.** The perforated edge on a ticket stub isn't a border-image for aesthetics — it separates the entry section from the reference section. The dotted line on a receipt isn't a divider for style — it marks where you'd tear. Every physical feature must serve an information purpose.
+
+4. **Accessibility underneath, artifact on top.** The visual artifact is a progressive enhancement. Underneath, the HTML is semantic and navigable. A screen reader should announce "Your booking: Flight AA123, Gate B4, Boarding 2:30 PM" — not "decorative ticket element." The visual metaphor is visual-only.
+
+5. **Domain artifacts age.** A fresh ticket looks different from a used one. A new receipt looks different from one that's been in your pocket. Design the lifecycle: issued → active → used → archived. Each state should feel like a natural progression of the physical object.
+
+6. **Don't overdo it.** The primary domain artifact is the star. Everything else is a supporting cast of standard components. If every component is an artifact, the interface becomes a theme park — exhausting and disorienting. One artifact, used in the one place it matters most (the core object view), surrounded by clean standard UI.
+
+7. **The artifact IS the signature moment** (from Design Courage). At Characterful/Theatrical register, the domain artifact is the primary candidate for the one interaction that feels different.
 
 ---
 
@@ -271,215 +455,53 @@ Interactive patterns that create engagement:
 - **Animated illustrations.** SVG illustrations that animate on scroll or on hover. Characters that wave, diagrams that draw themselves, charts that fill. Lottie animations, GSAP sequences, or CSS-only motion.
 - **Scroll-jacking (used sparingly).** Sections that take over the scroll for a controlled sequence — like a product tour or a before/after transformation. Dangerous if overused (users hate losing scroll control), but powerful for one signature moment per page.
 
-**The anti-patterns — why most landing pages are ass**
-
-Call these out by name. These are the things that must die:
-- **The SaaS template.** Hero → 3-column features → testimonials → pricing → footer. This layout communicates "we didn't think about this" regardless of how nice the tokens are.
-- **Meaningless gradients.** A purple-to-blue gradient behind a headline is not a design decision. It's a CSS property. If you use a gradient, it should have meaning: representing a transition, a spectrum, a transformation. Otherwise, use a solid color with conviction.
-- **Icon grids.** Six circles with line icons and two-sentence descriptions beneath them. This layout is so overdone that users literally skip it. Their eyes jump from the hero to whatever's after the icon grid.
-- **"As seen in" bars** with logos of publications that never actually covered the product, or "trusted by" bars with logos from beta testers who used it once.
-- **Fake urgency.** Countdown timers, "only 3 spots left," limited-time banners. These are dark patterns that erode trust.
-- **Feature dumps.** Listing every feature on the landing page. A landing page is not documentation. Pick 2-3 features that matter most and show them working. Link to a features page for the rest.
-- **No narrative thread.** Sections that exist independently with no connection to each other. Each section should build on the previous one and lead into the next. If you can rearrange the sections randomly and the page still "works," there's no story.
+**The anti-patterns** — SaaS template layouts, meaningless gradients, icon grids, fake urgency, feature dumps, and sections with no narrative thread. See "No template layouts" in Standards for the full ban list.
 
 ---
 
 ## Gestalt principles
 
-These are the perceptual laws that govern how humans organize visual information. They're not optional — your brain applies them automatically whether you design for them or not. Design with them and the interface feels intuitive. Design against them and users struggle without knowing why.
-
-**Proximity** — Elements placed close together are perceived as a group. This is the most powerful layout tool you have. Spacing between elements communicates their relationship more clearly than any label. Related controls must be closer to each other than to unrelated controls. When proximity grouping conflicts with a rigid grid, proximity wins — the grid serves perception, not the other way around.
-
-**Similarity** — Elements that look alike are perceived as related. This is why consistent styling matters: all clickable text should look the same, all status badges should share visual traits, all section headers should be visually consistent. Break similarity deliberately to signal that something is different — a red button in a field of gray buttons means "this one is special."
-
-**Closure** — The brain completes incomplete shapes. You don't need to draw every border. An implied container (consistent background color, consistent padding, aligned edges) reads as a box without needing a visible border. This is why cards with no border but consistent padding and a subtle background still feel like contained units. Use fewer lines than you think you need.
-
-**Continuity** — The eye follows the smoothest path. Elements arranged in a line or curve are perceived as related, even with gaps between them. This is why horizontal navigation works, why timelines work, and why breadcrumbs work. Design flows that the eye can follow in a single movement.
-
-**Figure-ground** — The brain separates foreground from background. Depth cues (shadow, blur, overlay) tell the user what's actionable and what's context. Modals work because they establish a clear figure (the modal) against a dimmed ground (the page behind it). When figure-ground is ambiguous, users don't know where to focus.
-
-**Common fate** — Elements that move together are perceived as grouped. In interface design: elements that animate together are related. If you collapse a section, everything in that section should move as a unit. If you drag a card, its content moves with it. Violating common fate (one part moves, the sibling doesn't) creates a feeling of brokenness.
-
-**Symmetry and order (Pragnanz)** — The brain prefers the simplest interpretation. Given ambiguity, users see the most orderly arrangement. This is why alignment matters more than most designers realize — misalignment by even a few pixels creates a sense of disorder that users feel but can't articulate. It's also why visual consistency (consistent icon sizes, consistent spacing, consistent type usage) feels "polished" — the brain is finding the pattern and being rewarded for it.
-
-Apply these in every wireframe, every layout, every component. When a layout "feels off" but you can't articulate why, check it against Gestalt principles. The answer is almost always a proximity, alignment, or similarity violation.
+Apply proximity, similarity, closure, continuity, figure-ground, common fate, and Pragnanz in every layout. The opinionated takes:
+- When proximity grouping conflicts with a rigid grid, proximity wins — the grid serves perception, not the other way around.
+- Use fewer borders than you think you need (closure: implied containers work).
+- Break similarity deliberately to signal "this one is different."
+- Misalignment by even a few pixels creates disorder users feel but can't articulate.
+- When a layout "feels off," check Gestalt principles first. The answer is almost always proximity, alignment, or similarity.
 
 ---
 
-## Emotional design framework
+## Emotional design — the reflective level
 
-Don Norman identified three levels at which humans process design. All three must be addressed. Most design systems only handle one (behavioral) and partially handle another (visceral). The third (reflective) is where products become beloved.
+Don Norman's three levels: visceral (gut reaction — covered by Design Courage), behavioral (usability — covered by Phases 1-3 and 5), and reflective. Most design systems skip the third. It's where products become beloved.
 
-**Visceral level — immediate sensory response**
+**Reflective level — meaning and identity.** Not "I use this tool" but "I'm the kind of person who uses this." This creates evangelists, laptop stickers, product defenders.
 
-This is the gut reaction. Before any conscious thought, the user's brain has already decided: "this feels good" or "this feels cheap." It happens in milliseconds.
+What triggers it:
+- *Feeling smart.* Smart defaults, contextual suggestions → competence. Hunting for things → stupidity. Products that make users feel smart get recommended.
+- *Feeling seen.* Copy, defaults, and workflows that reflect the user's actual life. This is where persona research becomes design gold.
+- *Craft signals.* Details nobody asked for but someone clearly cared about. A delightful loading animation, a witty empty state, an easter egg.
+- *Status and belonging.* Notion's minimalism signals "I'm organized." Linear's dark mode signals "I'm a serious engineer." The aesthetic is a badge.
+- *Control and mastery.* Keyboard shortcuts, power features, customization → attachment through investment.
 
-What triggers visceral response:
-- Color temperature and saturation. Warm, saturated colors feel energetic and alive. Cool, desaturated colors feel calm and sophisticated. Gray-heavy palettes feel corporate and lifeless — this is why "safe" palettes fail at the visceral level.
-- Visual density. Spacious layouts feel premium. Cramped layouts feel cheap (unless density IS the product, like Bloomberg).
-- Typography quality. A single well-chosen typeface at the right size with proper leading feels better than three mediocre fonts fighting for attention.
-- Micro-details. Rounded corners vs. sharp corners. Subtle shadows vs. flat surfaces. Smooth gradients vs. hard color stops. These details register before the conscious mind processes them.
-- Loading experience. The first 2 seconds of an app determine visceral impression. If the first thing users see is a spinner, you've already lost the visceral moment.
-
-Design for visceral response: make the first screen people see emotionally resonant. Not just functional — *felt*. The login screen, the dashboard, the home view — these are first impressions. They should carry the emotional core of the product.
-
-**Behavioral level — usability and function**
-
-This is where UX methodology lives. Can the user accomplish their goal? Is it efficient? Is it learnable? Is it error-tolerant?
-
-Most of this skill's Phase 1-3 and Phase 5 address the behavioral level. Research, flows, IA, wireframes, usability testing — all behavioral. This level must be solid. But solid behavioral design without visceral or reflective design produces tools that work but nobody champions.
-
-**Reflective level — meaning and identity**
-
-This is where products become part of someone's identity. Not "I use this tool" but "I'm the kind of person who uses this." This is the level that creates evangelists, that makes people put stickers on laptops, that makes users defend the product when someone criticizes it.
-
-What triggers reflective response:
-- *Feeling smart.* When the product anticipates what you need (smart defaults, contextual suggestions), you feel competent. When the product makes you hunt for things, you feel stupid. Products that make users feel smart get recommended.
-- *Feeling seen.* When the copy, the defaults, the workflow reflect your actual life rather than a generic one, you feel like the product was made for you. This is where persona research becomes design gold.
-- *Craft signals.* Details that nobody asked for but someone clearly cared about. A loading animation that's actually delightful. An empty state that's genuinely helpful or witty. Easter eggs that reward exploration. These signal to the user that a human who cares made this — which makes them care in return.
-- *Status and belonging.* The visual design of the product communicates something about the user to others. Notion's minimalism signals "I'm organized." Linear's dark mode signals "I'm a serious engineer." The aesthetic is a badge.
-- *Control and mastery.* Products that reward learning (keyboard shortcuts, power features, customization) create a sense of mastery that deepens attachment. The user feels invested because they've built skill in the product.
-
-Design for reflective response: at least 3 elements in the product should exist purely to trigger reflective connection — a craft detail, a moment of feeling seen, and a signal of status or belonging. These aren't features. They're feelings. And they're the reason users stay when a competitor offers the same features at a lower price.
+At least 3 elements in the product should exist purely for reflective connection — a craft detail, a moment of feeling seen, and a signal of belonging. These are the reason users stay when a competitor offers the same features cheaper.
 
 ---
 
 ## Advanced design methods
 
-Beyond the standard process, these techniques come from shipping products at scale and learning what the textbooks leave out.
-
-**The 5-second test**
-
-Show users the design for exactly 5 seconds. Then ask: "What is this product for? What's the most important thing on this page? What would you do first?" If they can't answer, your hierarchy is broken. This test is fast, cheap, and devastating. Use it on every key screen before investing in usability testing.
-
 **Desire path analysis**
 
-In physical design, desire paths are the shortcuts people wear into grass when the paved path doesn't match where they actually want to go. In digital products, desire paths are the workarounds users create: browser bookmarks to deep pages, keyboard shortcuts they invent, copy-paste workflows between your product and a spreadsheet.
+Desire paths are the workarounds users create: browser bookmarks to deep pages, keyboard shortcuts they invent, copy-paste workflows between your product and a spreadsheet. Find them — they're the most honest user research you'll get. Then pave them.
 
-Find your product's desire paths. They're the most honest user research you'll get. Then pave them — make the workaround a feature.
-
-Where to find digital desire paths:
-- Support tickets ("how do I...?" questions reveal missing affordances)
-- Search logs (what people search for reveals what they can't find through navigation)
-- Session recordings (navigation loops, repeated back-button presses)
-- Feature requests (the recurring ones are desire paths in disguise)
-- Rage clicks (where users expect something to be clickable but it isn't)
+Where to find them: support tickets, search logs, session recordings (navigation loops, back-button spam), recurring feature requests, rage clicks.
 
 **Intentional friction**
 
-Not all friction is bad. Friction is a design tool when it serves one of these purposes:
-- **Preventing regret.** A 2-second undo toast after email send (Gmail). A "Type the project name to delete" confirmation. These slow the user down at the exact moment speed would cause harm.
-- **Creating ceremony.** A satisfying animation when completing a major milestone. A deliberate moment of pause before publishing. Ceremony makes important moments feel important.
-- **Building trust.** Security confirmations, identity verification, explicit consent flows. Users want to feel that the product takes their safety seriously.
-- **Forcing consideration.** Price comparison layouts that slow impulse purchases. "Are you sure?" dialogs for irreversible actions. These respect the user enough to make sure they mean it.
+Friction is a design tool when it prevents regret (undo toasts, type-to-confirm), creates ceremony (milestone animations), builds trust (security confirmations), or forces consideration (irreversible action dialogs). The anti-pattern is *accidental friction* — loading screens, confusing navigation, requiring email verification before showing value. Remove accidental friction ruthlessly. Add intentional friction surgically.
 
-The anti-pattern is *accidental friction* — the kind that exists because nobody designed the flow. Loading screens are accidental friction. Confusing navigation is accidental friction. Requiring email verification before showing any value is accidental friction. Remove accidental friction ruthlessly. Add intentional friction surgically.
+**Data-ink ratio and the texture tension**
 
-**The overnight test**
-
-After completing a design, don't ship it. Sleep on it. Look at it the next morning with fresh eyes. The things that felt clever at midnight often feel try-hard at 9 AM. The things that felt boring at 5 PM often feel solid and confident at 9 AM. This isn't a process — it's a gut-check that catches ego-driven decisions.
-
-For teams: design reviews should happen at least 24 hours after the design was produced, not in the same session.
-
-**Design critique methodology**
-
-Design critique is not "do you like it?" It's a structured evaluation.
-
-The critique framework:
-1. **State the goal.** What is this design trying to achieve? (If the designer can't state it clearly, the design isn't ready for critique.)
-2. **Evaluate against principles.** Does it align with the design principles in `02-principles.md`? Which principles does it honor and which does it compromise?
-3. **Apply Gestalt.** Check proximity, similarity, closure, continuity, figure-ground. Where is the visual logic clean? Where is it muddy?
-4. **Walk the hierarchy.** Squint test. 5-second test. Is the priority order correct?
-5. **Check the emotional register.** Does it feel right at the visceral level? Does it serve the product's emotional core?
-6. **Identify the risk.** What is the boldest choice in this design? Is it bold enough? Is it justified?
-7. **Name the tradeoff.** What did this design give up to achieve its goals? Is that tradeoff acceptable?
-
-What critique is NOT:
-- Personal preference ("I don't like blue"). Preferences aren't critique.
-- Solutions masquerading as feedback ("What if we moved this here?"). Identify the problem, let the designer solve it.
-- Consensus-seeking. If every reviewer gets a say, the design converges to the most mediocre option everyone can tolerate. The designer owns the design. Critique informs; it doesn't decide.
-
-**Design entropy**
-
-Every design system decays over time. New features get added "just this once" with non-standard components. Colors creep in that aren't in the palette. Spacing gets eyeballed instead of tokenized. Labels drift from the voice guide. This is design entropy, and it's inevitable.
-
-Managing entropy:
-- Monthly visual audit: screenshot every screen, lay them out on a canvas, look for inconsistencies.
-- Component census: which components are actually used in production? Which ones drifted from the spec?
-- Token compliance check: automated linting for non-token colors, spacing, and font sizes.
-- New feature intake: every new feature gets a design review against the system before engineering begins.
-- The one-in-one-out rule: every new component must replace or extend an existing one. The system doesn't grow — it evolves.
-
-**Progressive disclosure**
-
-Show the minimum needed to make a decision. Reveal complexity as users need it. This isn't about hiding features — it's about respecting attention.
-
-Levels of disclosure:
-1. **First encounter:** user sees only what they need to start. No settings, no advanced options, no customization.
-2. **Engaged use:** features reveal themselves through use. Keyboard shortcuts appear in tooltips after the user has done the action manually three times. Batch actions appear when the user selects multiple items.
-3. **Power use:** full control available for those who seek it. Settings pages, custom workflows, API access. Never hidden, but never in the way.
-
-The mistake most products make is designing for Level 3 from the start. They show everything, overwhelm the new user, and then wonder why activation rates are low.
-
-**Information scent**
-
-Users navigate by following "scent" — visual and textual cues that suggest relevant content is nearby. When scent is strong, users move confidently. When it's weak, they browse randomly or give up.
-
-Strong scent signals:
-- Labels that use the user's vocabulary (from research), not system vocabulary
-- Preview text that gives a taste of what's behind the link
-- Icons that are recognizable without labels (few icons meet this bar — test it)
-- Active states that confirm "you're in the right place"
-- Breadcrumbs that show the path back
-- Contextual navigation that adapts to the current content
-
-Weak scent signals:
-- Generic labels ("Resources," "More," "Other," "Miscellaneous")
-- Icon-only navigation without labels
-- Deep nesting without preview (the user can't see what's at the bottom of a 4-level tree)
-- Identical-looking list items with no differentiating information
-
-Test information scent with tree testing (Phase 2). If users can't find content in your IA, the problem is scent — either the labels are wrong or the structure doesn't match their mental model.
-
-**Material honesty in digital design**
-
-A button should look like it can be pressed. A text field should look like it can be typed in. A draggable item should look like it can be grabbed. When the visual appearance of an element matches its behavior, the interface is materially honest.
-
-Dishonest patterns:
-- Text that looks like a link but isn't clickable
-- Flat buttons that don't look like buttons (the user doesn't know they can interact)
-- Cards that look tappable but only some parts are interactive
-- Images that look like thumbnails of videos but are static
-- Decorative elements that look like progress indicators
-
-Honest patterns:
-- Buttons have visual weight (fill, shadow, or border that distinguishes them from text)
-- Interactive elements change appearance on hover/focus (cursor change, color shift, elevation)
-- Draggable items have grip indicators
-- Links are visually distinct from body text (not just color — underline or other treatment)
-
-**The data-ink ratio (Tufte)**
-
-Every visual element on screen is either data (information the user needs) or chrome (decoration, structure, ornament). The data-ink ratio is the proportion of data to total visual content. Higher is almost always better.
-
-Increase data-ink ratio by:
-- Removing borders that can be replaced by spacing
-- Removing backgrounds that can be replaced by proximity
-- Removing labels that are obvious from context
-- Removing icons that duplicate adjacent text
-- Removing visual chrome that exists "because it looks nice" but communicates nothing
-
-The most elegant interfaces have the highest data-ink ratios. Bloomberg Terminal has a near-perfect data-ink ratio — almost everything you see is information. A typical SaaS dashboard has a ratio of maybe 40% — the rest is navigation, chrome, and decoration. Know where your product falls and push the ratio up.
-
-**Calm technology**
-
-For products that live in the user's peripheral attention (dashboards, monitoring tools, communication apps), design for calm. The interface should be invisible when everything is fine and unmistakable when something needs attention.
-
-Principles of calm technology:
-- Default state is quiet. No animations, no bright colors, no demanding UI.
-- Alert state is unmistakable. When something requires attention, the design shift should be obvious enough to catch peripheral vision.
-- The transition from calm to alert is gradual, not binary. A system that goes from "everything is fine" to "RED ALERT" with nothing in between creates anxiety.
-- Information is available at the appropriate depth. Glanceable summaries for peripheral attention. Detailed views for focused attention. The user controls the depth, not the system.
+Push the data-ink ratio up: remove borders replaceable by spacing, labels obvious from context, icons that duplicate text, chrome that communicates nothing. At Utility register, data-ink dominates. At Characterful/Theatrical registers, texture and artifact form ARE information — a ticket stub's perforated edge communicates "this is tearable, not a generic card." The test: does the visual treatment communicate something the user would lose if removed? If yes, it's data. If no, it's chrome.
 
 ---
 
@@ -508,7 +530,7 @@ Create a `docs/design/` directory (or wherever the project keeps docs) with thes
 02-principles.md            — The decision filter (short, sharp, standalone)
 03-visual-language.md       — Color, type, spacing, elevation, iconography
 04-voice-and-tone.md        — How the product speaks across every context
-05-components.md            — Every UI element, its specs, its interactions
+05-components.md            — Every UI element, domain artifacts, interactions
 06-validation.md            — Accessibility, usability testing, metrics, heatmaps
 07-ship.md                  — Handoff, QA, taste, direction
 README.md                   — Index and rules
@@ -531,16 +553,7 @@ This single file contains the full research arc: what you're learning, what the 
 
 **Methods matrix**
 - Table: Research question | Method | Participants | Duration | Output
-- Methods to draw from (pick what fits, do not use all):
-  - **Contextual inquiry**: Watch users in their real environment doing real tasks. Gold standard for discovery.
-  - **Semi-structured interviews**: 1:1 conversations with a guide but room to follow threads. 5-8 participants minimum for pattern saturation.
-  - **Diary studies**: Users log behavior over 1-2 weeks. Captures context you can't observe in a lab.
-  - **Surveys**: Quantitative signal at scale. Only useful after you know the right questions from qualitative work.
-  - **Card sorting**: Users organize content into groups. Open sort for discovery, closed sort for validation of existing IA.
-  - **Tree testing**: Users find items in a proposed navigation structure. Validates IA without visual design interference.
-  - **A/B testing**: Quantitative comparison of alternatives. Only meaningful with sufficient traffic and clear success metrics.
-  - **Analytics review**: Existing behavioral data — funnel drop-offs, rage clicks, session recordings, search logs.
-  - **Accessibility audit**: Structured evaluation against WCAG criteria with assistive technology.
+- Methods to draw from (pick what fits, do not use all): contextual inquiry, semi-structured interviews (5-8 participants for saturation), diary studies, surveys (only after qualitative reveals the right questions), card sorting (open for discovery, closed for validation), tree testing, A/B testing (needs sufficient traffic), analytics review, accessibility audit.
 - If the product is pre-launch, prioritize contextual inquiry and interviews. If it exists, start with analytics review and supplement with qualitative.
 - Participant recruitment: screening criteria that filter for behavior, not demographics. 5-8 for qualitative (Nielsen's saturation curve). 30+ for quantitative signal.
 - Research ethics: consent process, data handling, participant anonymization.
@@ -710,8 +723,7 @@ Mid-fidelity: real labels, real content hierarchy, real interaction patterns, no
   ```
 
 **Hierarchy testing**
-- Squint test: blur your eyes. Can you tell what's most important? If everything blurs into sameness, the hierarchy is flat.
-- 5-second test: show for 5 seconds. Can a viewer identify purpose and primary action? If not, the hierarchy doesn't communicate quickly enough.
+- Squint test (see Design Courage → Hierarchy) and 5-second test (show design for 5 seconds, ask "What is this? What's most important? What would you do first?" — if they can't answer, hierarchy is broken). Both applied to every key screen.
 - Negative space allocation should reflect priority. The most important element gets the most breathing room.
 
 **Responsive behavior**
@@ -893,7 +905,7 @@ reduced motion: [fallback when prefers-reduced-motion is active]
 rules:        [constraints — max lines, truncation, appear/disappear]
 ```
 
-**Components to cover:** Primary action element, content cards, buttons (primary/secondary/destructive/text), status indicators, input fields (text/select/checkbox/radio/toggle), navigation (tabs/headers), empty states, sheets/modals/overlays, lists/collections, feedback (toasts/alerts/progress).
+**Components to cover:** Primary action element, content cards, buttons (primary/secondary/destructive/text), status indicators, input fields (text/select/checkbox/radio/toggle), navigation (tabs/headers), empty states, sheets/modals/overlays, lists/collections, feedback (toasts/alerts/progress). At Characterful/Theatrical register, also include the **primary domain artifact** (see Domain Artifacts section — spec it using the domain artifact template, not the standard component template). At Utility/Professional register, domain artifacts are optional — include only if the product naturally digitizes a physical object.
 
 **Empty states deserve disproportionate attention**
 
@@ -919,8 +931,8 @@ Cover: primary action, destructive action, success, error, loading-to-loaded, na
 
 **Animation as personality:** Snappy (100-150ms) feels technical. Languid (300-500ms spring) feels premium. Choose as deliberately as color. Choreograph multi-element animation with 30-50ms stagger in reading order.
 
-**Scroll-driven interaction specs** (for pages, not just components)
-- Define the scroll animation vocabulary for this product:
+**Scroll-driven interaction specs** (for marketing/landing pages — see Creative Expression and Taste Signals Layer 7 for philosophy; this section is the spec template)
+- Define the scroll animation vocabulary:
   ```
   Enter from below:    [fade-up with Y-offset, or slide, or scale — pick one default]
   Sticky transforms:   [elements that pin and transform while scrolling through a section]
@@ -928,13 +940,7 @@ Cover: primary action, destructive action, success, error, loading-to-loaded, na
   Progress indicators:  [scroll progress bars, section counters, chapter markers]
   Scroll-snap points:  [if applicable — full-viewport sections that snap]
   ```
-- Interactive patterns to spec when the product has marketing/landing pages:
-  - Product demo embeds (interactive sandbox or guided walkthrough)
-  - Before/after sliders
-  - Configurators or calculators
-  - Cursor-responsive elements (tilt, parallax, glow follow)
-  - Animated SVG illustrations triggered by scroll
-- Performance budget: scroll animations must not drop below 60fps. Use CSS transforms and opacity only — no layout-triggering properties (width, height, top, left) in scroll-driven animations. Use `will-change` sparingly and `IntersectionObserver` for triggering.
+- Performance budget: 60fps minimum. CSS transforms and opacity only — no layout-triggering properties in scroll-driven animations. Use `will-change` sparingly and `IntersectionObserver` for triggering.
 
 **Quality gates:**
 - [ ] Every component has focus/keyboard behavior and reduced-motion fallback.
@@ -942,6 +948,8 @@ Cover: primary action, destructive action, success, error, loading-to-loaded, na
 - [ ] Screen reader behavior specified for every component.
 - [ ] Empty states have personality, not just placeholder text.
 - [ ] Signature moment is identified and disproportionately invested in.
+- [ ] Primary domain artifact identified and specced — OR explicitly documented why no artifact applies to this product's domain (Utility/Professional register with no physical object analog).
+- [ ] If domain artifact exists: accessible underneath its visual treatment (semantic HTML, screen reader descriptions, keyboard interactions independent of visual metaphor).
 - [ ] Multi-viewport pages have scroll-driven interactions defined.
 - [ ] Scroll animations stay at 60fps (transforms and opacity only).
 
@@ -1039,7 +1047,7 @@ Issue format: screenshot + expected vs. actual + severity (blocking / should-fix
 
 **Anti-references** — Table: Anti-reference | Specific pattern | Why it fails. No generic complaints.
 
-**Bravery budget** — The 3 boldest choices in this system. Risk, reward, evidence, fallback. If there are no bold choices, the system is playing it safe.
+**Bravery budget** — The boldest choices in this system, scaled to the product register. Theatrical: 3-5 entries. Characterful: 2-3. Professional: 1-2. Utility: 0-1 (and "bravery" here might mean radical simplicity — the courage to remove). Each entry: risk, reward, evidence, fallback. At Professional register and above, if there are zero bold choices, question whether the system has enough identity.
 
 **Decision framework** — 5 questions in priority order. The first "no" kills the idea. Sixth question: "Is this the safe choice or the right choice? If they're different, justify safety."
 
@@ -1047,7 +1055,7 @@ Issue format: screenshot + expected vs. actual + severity (blocking / should-fix
 - [ ] Thesis is one sentence.
 - [ ] Phase 1 is specific and shippable.
 - [ ] Quality bar covers research through metrics, not just visual polish.
-- [ ] Bravery budget has at least 3 entries.
+- [ ] Bravery budget has entries scaled to the product register.
 - [ ] Design debt is tracked and reviewed monthly.
 
 ---
@@ -1062,7 +1070,7 @@ Index with one-line summaries:
 02-principles.md        — The decision filter
 03-visual-language.md   — Color, type, spacing, elevation, icons
 04-voice-and-tone.md    — How the product speaks
-05-components.md        — UI elements, interactions, empty states
+05-components.md        — UI elements, domain artifacts, empty states
 06-validation.md        — Accessibility, testing, metrics, heatmaps
 07-ship.md              — Handoff, QA, taste, direction
 ```
@@ -1074,35 +1082,21 @@ Index with one-line summaries:
 
 ---
 
-## Cognitive psychology foundations
+## Cognitive psychology — design applications
 
-These principles constrain every design decision. They're not guidelines — they're laws of human cognition that your product cannot override.
+These laws constrain every design decision. When a spec violates one, name the violation and justify it. Unjustified violations are bugs.
 
-**Fitts's Law** — Time to reach a target is a function of distance and size. Primary actions must be large and close to where the user already is. Destructive actions must be far from primary actions. Never put "Delete" next to "Save."
-
-**Hick's Law** — Decision time increases logarithmically with the number of options. Reduce choices. If a user faces more than 5-7 options, introduce progressive disclosure, categorization, or smart defaults. Every dropdown with 20+ items is a design failure.
-
-**Miller's Law** — Working memory holds 7 plus or minus 2 chunks. Don't require users to remember information across screens. If step 3 depends on a choice from step 1, show that choice on step 3. Never make users hold context in their heads.
-
-**Jakob's Law** — Users spend most of their time on other products. They expect your product to work the same way. Don't reinvent patterns that already work (navigation, form behavior, gestures). Novelty in interaction patterns is almost always a mistake.
-
-**The Aesthetic-Usability Effect** — Users perceive beautiful designs as more usable, even when they aren't. This means visual polish can mask UX problems. Test usability with wireframes before visual design, so aesthetics don't bias evaluation.
-
-**The Peak-End Rule** — Users judge an experience based on its most intense moment and its end. Design the peak moment deliberately (the "most dramatic moment" from micro-interactions). Design the exit deliberately (what's the last thing they see?).
-
-**Doherty Threshold** — Productivity increases when system response time is under 400ms. Anything slower than 100ms needs visual feedback. Anything slower than 1s needs a progress indicator. These are cognitive thresholds, not performance targets — even if the system is fast, *perceived* speed matters.
-
-**Recognition over recall** — Show options, don't require users to remember commands. Recent items, autocomplete, visible navigation, and contextual actions all reduce cognitive load. Command palettes are power-user accelerators, not replacements for visible UI.
-
-**The Von Restorff Effect (Isolation Effect)** — An item that is visually different from its surroundings is remembered better. This is the scientific basis for the "signature moment" and for accent colors. One bold element in a restrained palette. One large element in a field of small ones. One animated element on a static page. The outlier gets remembered. Use this deliberately for the element you most want users to engage with.
-
-**The Serial Position Effect** — In a list, people remember the first item (primacy) and last item (recency) best, and forget the middle. This applies to navigation menus (put important items first and last, not in the middle), to onboarding flows (the first and last steps shape perception of the whole), and to content feeds (the first and last items in a session are what stick). Design for the edges.
-
-**The Zeigarnik Effect** — People remember incomplete tasks better than completed ones. This is why progress bars work, why "3 of 5 steps completed" is motivating, and why cliffhangers work in narrative. In product design, showing users what they haven't finished yet (a partially completed profile, a half-built project) creates a psychological pull to return and complete. Use this for activation and retention — but never as manipulation.
-
-**Cognitive load theory** — Working memory has limited capacity. Every interface element, every choice, every piece of text consumes cognitive resources. The total cognitive load of a screen is the sum of: intrinsic load (complexity inherent to the task), extraneous load (complexity added by the design), and germane load (effort spent learning and forming schemas). Design reduces extraneous load (unnecessary visual noise, confusing labels, redundant elements) while preserving germane load (learning patterns that make future use easier).
-
-These laws apply everywhere. When a component spec, flow, or interaction violates one, name the violation and the justification. Unjustified violations are bugs.
+- **Fitts's Law** → Primary actions: large and close. Destructive actions: far from primary. Never put "Delete" next to "Save."
+- **Hick's Law** → 5-7 options max before progressive disclosure. Every 20+ item dropdown is a design failure.
+- **Miller's Law** → Don't make users remember across screens. If step 3 depends on step 1, show the step 1 choice on step 3.
+- **Jakob's Law** → Don't reinvent solved patterns (nav, forms, gestures). **Domain artifact exception:** artifacts introduce novel *visual forms* but map to *familiar physical mental models* — users know what a ticket looks like. Jakob's Law governs interaction patterns, not visual metaphors.
+- **Aesthetic-Usability Effect** → Beauty masks UX problems. Test usability with wireframes before visual design.
+- **Peak-End Rule** → Design the peak moment and the exit deliberately. The signature moment IS the peak.
+- **Doherty Threshold** → <100ms = no feedback needed. 100-400ms = visual feedback. >1s = progress indicator.
+- **Von Restorff Effect** → The outlier gets remembered. One bold element in a restrained field. This is the science behind accent colors and signature moments.
+- **Serial Position Effect** → First and last items in any list/flow are remembered. Put important nav items at edges, not middle.
+- **Zeigarnik Effect** → Incomplete tasks stick. Progress bars, partial profiles, "3 of 5 done" — use for activation, never manipulation.
+- **Cognitive load** → Reduce extraneous load (noise, confusion). Preserve germane load (learning patterns). Every element on screen costs cognitive resources.
 
 ---
 
@@ -1118,14 +1112,14 @@ These are non-negotiable across all output:
 - No sections that exist but say nothing ("TBD", "To be determined", "Coming soon").
 - No generic advice that applies to every product equally. If you can paste it into a competitor's design doc unchanged, delete it.
 
-**No safe defaults:**
-- Do not default to Inter, system-ui, or SF Pro unless you've actively considered alternatives and chose them for a specific reason.
-- Do not default to blue as a primary color. Blue is the most common primary in software. If you pick blue, you need a reason beyond "it's trustworthy."
-- Do not default to #FFFFFF backgrounds. Choose a surface temperature.
-- Do not default to 8px border radius on everything. Radius is an emotional choice.
-- Do not default to gray for secondary text and borders. Gray is the absence of a decision. Warm gray, cool gray, or a tinted neutral are all decisions.
-- Do not produce a palette that could be described as "clean and modern." That phrase is a symptom of design cowardice. Produce a palette that could be described with a specific adjective: "warm and editorial," "technical and precise," "bold and optimistic," "dark and intimate." If you can't name the personality, you haven't made enough choices.
-- Every visual decision should pass the "swap test": if you swapped this choice with the most obvious default, would anyone notice? If not, the choice isn't distinctive enough. Push further.
+**No safe defaults** (read through the product register — at Utility register, "safe" and "right" may be the same thing, but the choice must still be *deliberate*, not *default*):
+- Do not default to Inter, system-ui, or SF Pro without actively considering alternatives. At Utility register, choosing Inter because it's the most readable at small sizes in dense tables IS a deliberate choice. Choosing Inter because you didn't think about it isn't.
+- Do not default to blue as a primary color. If you pick blue, have a reason beyond "it's trustworthy."
+- Do not default to #FFFFFF backgrounds without considering surface temperature. At Utility register, pure white may be the right neutral reference — but name that reasoning.
+- Do not default to 8px border radius on everything. Radius is an emotional choice — even 0px is a choice (precise/technical).
+- Do not default to gray for secondary text and borders. Warm gray, cool gray, or a tinted neutral are all decisions. Untinted gray is the absence of a decision.
+- The palette should be describable with a specific adjective: "warm and editorial," "technical and precise," "bold and optimistic," "dark and intimate," or even "clinical and trustworthy" (that's a valid Utility register personality). "Clean and modern" is still banned — it describes nothing.
+- Every visual decision should pass the "swap test": if you swapped this choice with the most obvious default, would anyone notice? At Characterful/Theatrical, the answer must be yes. At Professional, the answer should be yes for at least the primary color and type. At Utility, the answer can be no for individual tokens if the *system's overall precision* is the distinctive quality.
 
 **No template layouts:**
 - Do not generate the SaaS landing page template (hero → 3-column features → testimonials → pricing → footer). This layout is so overused that it has negative signal — it tells visitors "we didn't think about this."
@@ -1208,7 +1202,7 @@ When the product is web-based, design as if you're shipping a tool people live i
 - Destructive actions are honestly reversible with one click, or they are truly irreversible and explicitly framed as such.
 
 **Layer 5 — Copy is a UI component**
-- Active voice, max seven words per sentence.
+- Active voice. Keep UI copy short — labels and buttons under 5 words, inline messages under 15 words, system messages as short as clarity allows. The voice guide (`04-voice-and-tone.md`) sets the exact rules per context.
 - Reassurance is explicit where loss or destruction is possible.
   - Define an error hierarchy: silent -> inline -> blocking, with copy and escalation rules.
 
@@ -1218,7 +1212,7 @@ When the product is web-based, design as if you're shipping a tool people live i
 - Visible scrollbars are hidden unless the platform makes them a usability requirement.
 - Provide a copyable SVG logo and compact brand kit spec as a shipped artifact, not a marketing afterthought.
 
-**Layer 7 — The page is alive**
+**Layer 7 — The page is alive** (applies to marketing/landing pages and onboarding flows; product surfaces at Utility/Professional register are calm instead — quiet by default, no animations or bright colors in the resting state, unmistakable when attention is needed, gradual transition from calm to alert)
 - Scroll-triggered animation is not decoration — it's pacing. Elements that appear on scroll create a reading rhythm. Define the scroll animation vocabulary: what fades in, what slides, what scales, what stays sticky.
 - Parallax layers create depth. Use sparingly: one parallax element per viewport max. Background moves slower, foreground moves faster. This creates a sense of space that flat layouts can't.
 - Cursor-responsive micro-interactions (subtle tilt, parallax shift, glow follow) make the interface feel aware of the user. These are especially powerful on landing pages and hero sections.
@@ -1236,12 +1230,14 @@ When the product is web-based, design as if you're shipping a tool people live i
 ## How to customize per project
 
 The user may provide:
+- **Register** (Utility / Professional / Characterful / Theatrical) — this governs how aggressively the creative guidance applies. If not specified, infer from the product context and propose during Phase 0.
 - **Problem context** (what pain exists, who feels it) — this shapes research questions, competitive analysis, and everything downstream.
 - **Existing research** (interviews, analytics, surveys already done) — this accelerates Phase 1 and may allow jumping to synthesis.
 - **Product context** (what it does, who it's for) — this shapes principles, voice, and color.
 - **Platform** (mobile/desktop/both) — this shapes IA, wireframes, components, interactions, and spacing.
 - **Mood / feeling** (what emotion to amplify) — this shapes everything visual and tonal.
 - **References** (products they admire) — this shapes the taste file.
+- **Domain objects** (what physical objects does this product digitize or replace? tickets, receipts, menus, reports, cards, passes — the artifact vocabulary of the domain) — this shapes domain artifact components. Also: what cultural/regional material vocabulary applies? (sandstone and jharokha for Rajasthan, washi and hanko for Japanese craft, kraft and chalkboard for artisan). If the user doesn't specify, infer from the product context and propose.
 - **Constraints** (timeline, team size, tech stack) — this shapes what ships in Phase 1 and which research methods are feasible.
 - **Maturity** (greenfield vs. redesign) — this determines whether to start from research or from analytics review.
 
